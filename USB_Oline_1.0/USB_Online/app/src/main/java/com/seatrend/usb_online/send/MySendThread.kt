@@ -28,7 +28,7 @@ class MySendThread(var mHandler: MainActivity.MessageHandler, var msg: String, v
             val msg = mHandler.obtainMessage()
             msg.what = Constants.POST_DATA
             mHandler.sendMessage(msg)
-            Log.w("lylog->[send]", "send data")
+            Log.d("lylog->[send]", "send data")
             socket.close()
         } catch (e: Exception) {
             val msg = mHandler.obtainMessage()

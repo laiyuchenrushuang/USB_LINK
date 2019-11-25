@@ -22,7 +22,7 @@ class MyReceiveThread(var mHandler: MainActivity.MessageHandler, var serverSocke
             val socket = serverSocket.accept()
             Log.d("lylog->[receive]", "accept")
             val dis = DataInputStream(socket.getInputStream())
-            Log.w("lylog->[receive]", "receive data")
+            Log.d("lylog->[receive]", "receive data")
             val msg = mHandler.obtainMessage()
             msg.what = Constants.GET_DATA
             msg.obj = dis.readUTF()

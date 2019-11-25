@@ -70,13 +70,14 @@ public class JavaTest {
 //        Thread.sleep(1000);
 //        sendMsg("555", socket);
 //        Thread.sleep(1000);
+        resetConnect();
         sendMsg("665665556555.00");
 
         showRecv();
     }
 
     private static void sendMsg(String s) throws Exception {
-        resetConnect();
+//        resetConnect();
         Socket socket = new Socket("127.0.0.1", 8000);
         DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
         dos.writeUTF(s);
@@ -98,7 +99,7 @@ public class JavaTest {
     }
 
     public static void showRecv() throws IOException {
-        resetConnect();
+//        resetConnect();
         while (true) {
             Socket socket = new Socket("127.0.0.1", 8000);
             DataInputStream dis = new DataInputStream(socket.getInputStream());
