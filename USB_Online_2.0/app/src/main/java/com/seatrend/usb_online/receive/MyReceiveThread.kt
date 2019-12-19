@@ -63,7 +63,9 @@ class MyReceiveThread(var mHandler: MainActivity.MessageHandler, var serverSocke
                 msg.obj = e.message
                 mHandler.sendMessage(msg)
             } finally {
-                inR!!.close()
+                 if(inR != null){
+                    inR.close()
+                }
             }
         }
 
