@@ -1,6 +1,7 @@
 package com.seatrend.usb_online
 
 import android.annotation.SuppressLint
+import android.annotation.TargetApi
 import android.content.Context
 import android.content.Intent
 import android.content.pm.*
@@ -19,8 +20,7 @@ import android.os.LocaleList
 import com.seatrend.usb_online.util.LanguageUtil
 import android.os.Build
 import android.support.annotation.RequiresApi
-
-
+import android.support.v4.app.ActivityCompat
 
 
 abstract class BaseActivty : AppCompatActivity() {

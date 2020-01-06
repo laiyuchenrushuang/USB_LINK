@@ -17,8 +17,6 @@ import android.text.TextUtils
 import com.seatrend.usb_online.adapter.MyAdapter
 import com.seatrend.usb_online.broadcast.ScanResultReceiver
 import com.seatrend.usb_online.enity.DataEnity
-import com.seatrend.usb_online.util.Constants
-import com.seatrend.usb_online.util.GsonUtils
 import device.scanner.DecodeResult
 import device.scanner.IScannerService
 import device.scanner.ScanConst
@@ -26,8 +24,7 @@ import device.scanner.ScannerService
 import java.util.*
 import kotlin.collections.ArrayList
 import android.util.DisplayMetrics
-import com.seatrend.usb_online.util.ActivityManager
-import com.seatrend.usb_online.util.LanguageUtil
+import com.seatrend.usb_online.util.*
 
 
 /**
@@ -156,6 +153,7 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
 
         btn_change_Languege.setOnClickListener {
 
+//            APPUtil.write("中英切换 哈哈")
             val config = resources.configuration
             val dm = resources.displayMetrics// 获得屏幕参数：主要是分辨率，像素等。
 
