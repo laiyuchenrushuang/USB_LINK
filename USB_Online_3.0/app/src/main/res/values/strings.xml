@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">USB_Online</string>
+    <string name="sdd">速度控制器</string>
+    <string name="sld">轉速指示燈</string>
+    <string name="tx">的士咪表</string>
+    <string name="dipan">底盤</string>
+    <string name="paper">紙質</string>
+    <string name="electronic">電子</string>
+    <string name="electronic_data_recorder">電子數據記錄器</string>
+    <string name="x">新標記</string>
+    <string name="y">已核實</string>
+    <string name="r">重新核實</string>
+    <string name="n">未核實</string>
+    <string name="scan">掃描</string>
+    <string name="insert">新增</string>
+    <string name="id">封簽ID:</string>
+    <string name="zl">封簽種類:</string>
+    <string name="wz">封簽位置:</string>
+    <string name="zt">封簽狀態:</string>
+    <string name="usb_connected">USB連接成功</string>
+    <string name="usb_off">USB已經斷開</string>
+    <string name="send_ok">發送成功</string>
+    <string name="no_cun_zai">掃描的條形碼不在列表中</string>
+    <string name="read_failed">掃描失敗</string>
+    <string name="checkusb">請檢查USB是否已連接</string>
+    <string name="receivefailed">接收數據為空.</string>
+</resources>

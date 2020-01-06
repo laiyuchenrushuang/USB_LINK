@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">USB_Online</string>
+    <string name="sdd">SDD</string>
+    <string name="sld">SLD</string>
+    <string name="tx">Taximeter</string>
+    <string name="dipan">Chassis</string>
+    <string name="paper">Paper</string>
+    <string name="electronic">Electronic</string>
+    <string name="electronic_data_recorder">Electronic data recorder</string>
+    <string name="x">New Tag</string>
+    <string name="y">Verified</string>
+    <string name="r">Re-verified</string>
+    <string name="n">Unverified</string>
+    <string name="scan">SCAN_ON</string>
+    <string name="insert">ADD</string>
+    <string name="id">SEAL ID:</string>
+    <string name="zl">SEAL TYPE:</string>
+    <string name="wz">SEAL POSITON:</string>
+    <string name="zt">SEAL STATE:</string>
+    <string name="usb_connected">Usb connection successful</string>
+    <string name="usb_off">USB disconnect</string>
+    <string name="send_ok">Send  data success.</string>
+    <string name="no_cun_zai">The scanned barcode is not in the list.</string>
+    <string name="read_failed">SCAN_READ_FAIL.</string>
+    <string name="checkusb">Please check whether USB is connected.</string>
+    <string name="receivefailed">receive data is null.</string>
+</resources>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_vertical"
+              android:orientation="vertical"
+              android:layout_marginBottom="5dp"
+              android:padding="10dp"
+              android:background="@drawable/item_bg">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+        <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:text="@string/id"/>
+
+        <TextView
+                android:id="@+id/item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:text="1111111"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+        <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:text="@string/zl"/>
+
+        <Spinner
+                android:id="@+id/sp_fqlx"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:gravity="left|center_vertical"
+                android:background="@drawable/sp_bg"
+                android:text="纸质/电子"
+                android:spinnerMode="dialog"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+        <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:text="@string/wz"/>
+
+        <Spinner
+                android:id="@+id/sp_fqwz"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="30sp"
+                android:background="@drawable/sp_bg"
+                android:gravity="left|center_vertical"
+                android:textColor="@color/black"
+                android:text="底盘/的士表"
+                android:spinnerMode="dialog"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+        <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:text="@string/zt"/>
+
+        <TextView
+                android:id="@+id/fqbj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:text="N"/>
+    </LinearLayout>
+</LinearLayout>
