@@ -60,6 +60,7 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
         bindEvent()
         registerUSBBroadcast()
         registerScanBroadcast()
+//        APPUtil.clearLogfile()
     }
 
     private fun initRecycleView() {

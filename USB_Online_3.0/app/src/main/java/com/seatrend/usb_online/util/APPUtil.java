@@ -1,11 +1,9 @@
 package com.seatrend.usb_online.util;
 
 import android.os.Environment;
+import android.util.Log;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * Created by ly on 2019/7/30 10:59
@@ -24,7 +22,7 @@ public class APPUtil {
             if (!file.exists()) {
                 file.mkdirs();
             }
-            File f=new File(file,"usb_log.txt");
+            File f = new File(file, "usb_log.txt");
             OutputStream out = null; // 打印流对象用于输出
             try {
                 out = new FileOutputStream(f, true); // 追加文件
@@ -39,6 +37,28 @@ public class APPUtil {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                }
+            }
+        }
+    }
+
+    public static void clearLogfile() {
+        Log.d("lylog","delete file ");
+        if (Environment.getExternalStorageState().equals(
+                Environment.MEDIA_MOUNTED)) { // 如果sdcard存在
+            File filed = new File(Environment.getExternalStorageDirectory()
+                    .toString()
+                    + "/USB_ONLINE");
+            File file = new File(filed, "usb_log.txt");
+            if (file.exists()) {
+                FileWriter fileWriter = null;
+                try {
+                    fileWriter = new FileWriter(file);
+                    fileWriter.write("");
+                    fileWriter.flush();
+                    fileWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }

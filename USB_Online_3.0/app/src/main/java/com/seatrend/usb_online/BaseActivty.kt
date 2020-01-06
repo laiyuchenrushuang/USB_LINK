@@ -78,20 +78,20 @@ abstract class BaseActivty : AppCompatActivity() {
 //    }
 
     //请求权限
-//    @TargetApi(Build.VERSION_CODES.M)
-//    private fun requestPermission() {
-//        var permissions = ArrayList<String>()
-//        if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != PackageManager.PERMISSION_GRANTED) {
-//            permissions.add("android.permission.WRITE_EXTERNAL_STORAGE")
-//        }
-//
-//        if (checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != PackageManager.PERMISSION_GRANTED) {
-//            permissions.add("android.permission.READ_EXTERNAL_STORAGE")
-//        }
-//        if (permissions.size > 0) {
-//            ActivityCompat.requestPermissions(this@BaseActivty, permissions.toTypedArray(), 1)
-//        }
-//    }
+    @TargetApi(Build.VERSION_CODES.M)
+    private fun requestPermission() {
+        var permissions = ArrayList<String>()
+        if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != PackageManager.PERMISSION_GRANTED) {
+            permissions.add("android.permission.WRITE_EXTERNAL_STORAGE")
+        }
+
+        if (checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != PackageManager.PERMISSION_GRANTED) {
+            permissions.add("android.permission.READ_EXTERNAL_STORAGE")
+        }
+        if (permissions.size > 0) {
+            ActivityCompat.requestPermissions(this@BaseActivty, permissions.toTypedArray(), 1)
+        }
+    }
 
     //权限检查
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
