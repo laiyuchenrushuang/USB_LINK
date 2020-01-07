@@ -14,9 +14,9 @@
             android:gravity="center_vertical">
 
         <TextView
-                android:layout_width="150dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textColor="@color/black"
                 android:text="@string/id"/>
 
@@ -24,7 +24,7 @@
                 android:id="@+id/item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:text="1111111"/>
@@ -35,9 +35,9 @@
             android:gravity="center_vertical">
 
         <TextView
-                android:layout_width="150dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textColor="@color/black"
                 android:text="@string/zl"/>
 
@@ -45,7 +45,7 @@
                 android:id="@+id/sp_fqlx"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textColor="@color/black"
                 android:gravity="left|center_vertical"
                 android:background="@drawable/sp_bg"
@@ -58,9 +58,9 @@
             android:gravity="center_vertical">
 
         <TextView
-                android:layout_width="150dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textColor="@color/black"
                 android:text="@string/wz"/>
 
@@ -68,7 +68,7 @@
                 android:id="@+id/sp_fqwz"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:background="@drawable/sp_bg"
                 android:gravity="left|center_vertical"
                 android:textColor="@color/black"
@@ -81,9 +81,9 @@
             android:gravity="center_vertical">
 
         <TextView
-                android:layout_width="150dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textColor="@color/black"
                 android:text="@string/zt"/>
 
@@ -91,7 +91,7 @@
                 android:id="@+id/fqbj"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:text="N"/>

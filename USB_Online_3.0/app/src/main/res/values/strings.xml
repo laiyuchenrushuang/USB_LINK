@@ -24,4 +24,12 @@
     <string name="read_failed">掃描失敗</string>
     <string name="checkusb">請檢查USB是否已連接</string>
     <string name="receivefailed">接收數據為空.</string>
+    <string name="jly">電子記錄儀</string>
+    <string name="yyh">預約號:  </string>
+    <string name="zh">站號:  </string>
+    <string name="zx">站線:  </string>
+    <string name="clsbdh">車輛識別代號:  </string>
+    <string name="fssj">發送數據</string>
+    <string name="jssj">接收數據</string>
+    <string name="qcsj">清除數據</string>
 </resources>

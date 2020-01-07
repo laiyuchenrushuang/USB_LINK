@@ -36,11 +36,8 @@ public class JavaTest {
         DataEnity enity = new DataEnity();
         enity.setDATA(list);
         System.out.print("send ok");
-        sendMsg("{\"APPOINT_NO\":\"123456\",\"STATUS\":\"0\",\"VEH_ID\":\"111\",\"CHASSIS_NO\":\"987654\",\"STATION\":\"A\",\"LEAN_NO\":\"4\",\"DATA\":[{\"SEAL_TYPE\":\"N\",\"SEAL_NO\":\"AA0001\",\"INSP_ITEM\":\"\",\"SPECIAL_TYPE\":\"2\"},{\"SEAL_TYPE\":\"X\",\"SEAL_NO\":\"AA0002\",\"INSP_ITEM\":\"\",\"SPECIAL_TYPE\":\"3\"}\n" +
-                ",{\"SEAL_TYPE\":\"R\",\"SEAL_NO\":\"AA0003\",\"INSP_ITEM\":\"\",\"SPECIAL_TYPE\":\"3\"}\n" +
-                ",{\"SEAL_TYPE\":\"Y\",\"SEAL_NO\":\"AA0004\",\"INSP_ITEM\":\"\",\"SPECIAL_TYPE\":\"3\"}\n" +
-                ",{\"SEAL_TYPE\":\"X\",\"SEAL_NO\":\"AA0005\",\"INSP_ITEM\":\"\",\"SPECIAL_TYPE\":\"3\"}]}");
-        showRecv();
+        sendMsg("{\"APPOINT_NO\":\"202001041135\",\"VEH_ID\":\"111222111\",\"CHASSIS_NO\":\"wcs\",\"STATION\":\"C\",\"LEAN_NO\":\"3\",\"STATUS\":\"0\",\"DATA\":[{\"SEAL_TYPE\":\"N\",\"SEAL_NO\":\"AA00001\",\"INSP_ITEM\":\"S6\",\"SPECIAL_TYPE\":\"PA\"}]} ");
+//        showRecv();
 
     }
 

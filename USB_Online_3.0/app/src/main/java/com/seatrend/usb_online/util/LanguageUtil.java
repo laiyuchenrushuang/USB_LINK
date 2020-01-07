@@ -78,11 +78,23 @@ public class LanguageUtil {
         return spLocale.getString(LOCALE_SP_BJ, "");
     }
 
+    public static String getTitleFromSP(Context context,String key) {
+        SharedPreferences spLocale = context.getSharedPreferences(LOCALE_DATA, Context.MODE_PRIVATE);
+        return spLocale.getString(key, "");
+    }
+
 
     public static void setBJToSp(Context pContext, String data) {
         SharedPreferences spLocal = pContext.getSharedPreferences(LOCALE_DATA, Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = spLocal.edit();
         edit.putString(LOCALE_SP_BJ, data);
+        edit.apply();
+    }
+
+    public static void setTitleToSp(Context pContext, String key,String data) {
+        SharedPreferences spLocal = pContext.getSharedPreferences(LOCALE_DATA, Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = spLocal.edit();
+        edit.putString(key, data);
         edit.apply();
     }
 

@@ -16,10 +16,13 @@ class MySendThread(var mHandler: MainActivity.MessageHandler, var msgStr: String
             Log.d("lylog->[send]", "accept")
             val dos = DataOutputStream(socket.getOutputStream())
             dos.writeUTF(msgStr)
-            val msg = mHandler.obtainMessage()
-            msg.what = Constants.POST_DATA
-            msg.obj = msgStr.trim()
-            mHandler.sendMessage(msg)
+            if("success".equals(msgStr)){
+                val msg = mHandler.obtainMessage()
+                msg.what = Constants.POST_DATA
+                msg.obj = msgStr.trim()
+                mHandler.sendMessage(msg)
+            }
+
             Log.d("lylog->[send]", "send data")
             socket.close()
         } catch (e: Exception) {

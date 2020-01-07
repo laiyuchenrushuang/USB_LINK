@@ -48,7 +48,7 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
     private var adapter: MyAdapter? = null //列表的适配器
     private var ll: LinearLayoutManager? = null
     private var flag = false  //区分是普通扫描识别还是扫描添加
-    private var sendData: DataEnity? = null
+    private var sendData = DataEnity()
 
     override fun initView() {
         mHandler = MessageHandler()
@@ -66,13 +66,23 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
     private fun initRecycleView() {
         ll = LinearLayoutManager(this)
         m_recycler_view!!.layoutManager = ll
-        if("1".equals(LanguageUtil.getBJFromSP(this))){ //1 证明是点击切换中英按钮来的
+        if ("1".equals(LanguageUtil.getBJFromSP(this))) { //1 证明是点击切换中英按钮来的
             mData = LanguageUtil.getDataFromSP(this)
+            text1.text = LanguageUtil.getTitleFromSP(this, "yyh")  //预约号
+            text2.text = LanguageUtil.getTitleFromSP(this, "zh")  //站号
+            text3.text = LanguageUtil.getTitleFromSP(this, "clsbdh") //车辆识别代号
+            text4.text = LanguageUtil.getTitleFromSP(this, "zx")//站线
+        }else{
+            LanguageUtil.setTitleToSp(this, "clsbdh", "")
+            LanguageUtil.setTitleToSp(this, "zh", "")
+            LanguageUtil.setTitleToSp(this, "zx", "")
+            LanguageUtil.setTitleToSp(this, "yyh", "")
         }
+        LanguageUtil.setBJToSp(this, "0")
         adapter = MyAdapter(this, mData)
-        adapter!!.setLisDataback(this)
         m_recycler_view.adapter = adapter
-        LanguageUtil.setBJToSp(this,"0")
+        adapter!!.setLisDataback(this)
+
     }
 
     private fun registerScanBroadcast() {
@@ -154,22 +164,37 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
 
         btn_change_Languege.setOnClickListener {
 
-//            APPUtil.write("中英切换 哈哈")
-            val config = resources.configuration
-            val dm = resources.displayMetrics// 获得屏幕参数：主要是分辨率，像素等。
+            //            APPUtil.write("中英切换 哈哈")
 
-            if (LanguageUtil.getCurrentLocale(this).equals(Locale.ENGLISH)) {
-                showLog("ENGLISH")
-                LanguageUtil.updateLocale(this, LanguageUtil.LOCALE_CHINESE)
-                LanguageUtil.setDataToSp(this,mData)
-                LanguageUtil.setBJToSp(this,"1")
-                this.recreate()
-            } else {
-                showLog("CHINESE")
-                LanguageUtil.updateLocale(this, LanguageUtil.LOCALE_ENGLISH)
-                LanguageUtil.setDataToSp(this,mData)
-                LanguageUtil.setBJToSp(this,"1")
-                this.recreate()
+            try {
+                if (LanguageUtil.getCurrentLocale(this).equals(Locale.ENGLISH)) {
+                    showLog("ENGLISH")
+                    LanguageUtil.updateLocale(this, LanguageUtil.LOCALE_CHINESE)
+                    LanguageUtil.setDataToSp(this, mData)
+                    if (sendData != null && !TextUtils.isEmpty(sendData!!.veH_ID)) {
+                        LanguageUtil.setTitleToSp(this, "clsbdh", sendData!!.veH_ID)
+                        LanguageUtil.setTitleToSp(this, "zh", sendData!!.station)
+                        LanguageUtil.setTitleToSp(this, "zx", sendData!!.leaN_NO)
+                        LanguageUtil.setTitleToSp(this, "yyh", sendData!!.appoinT_NO)
+                    }
+
+                    LanguageUtil.setBJToSp(this, "1")
+                    this.recreate()
+                } else {
+                    showLog("CHINESE")
+                    LanguageUtil.updateLocale(this, LanguageUtil.LOCALE_ENGLISH)
+                    LanguageUtil.setDataToSp(this, mData)
+                    if (sendData != null && !TextUtils.isEmpty(sendData!!.veH_ID)) {
+                        LanguageUtil.setTitleToSp(this, "clsbdh", sendData!!.veH_ID)
+                        LanguageUtil.setTitleToSp(this, "zh", sendData!!.station)
+                        LanguageUtil.setTitleToSp(this, "zx", sendData!!.leaN_NO)
+                        LanguageUtil.setTitleToSp(this, "yyh", sendData!!.appoinT_NO)
+                    }
+                    LanguageUtil.setBJToSp(this, "1")
+                    this.recreate()
+                }
+            } catch (e: Exception) {
+                showToast("ERROR2--" + e.message.toString())
             }
         }
     }
@@ -215,22 +240,40 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
                             //                        resetData()
                             val enity = GsonUtils.gson(msg.obj.toString(), DataEnity::class.java)
                             if ("1" == enity.status) {  //通知需要上传
-                                showLog("发送数据")
+                                showToast(resources.getString(R.string.fssj))
                                 if (null != sendData) {
                                     sendData!!.data = mData
                                     showLog(GsonUtils.toJson(sendData))
                                     soketCommit(GsonUtils.toJson(sendData))
                                 }
                             } else if ("0" == enity.status) { //获取数据
-                                showLog("接收数据")
+                                showToast(resources.getString(R.string.jssj))
                                 soketGetData(enity)
+                                showLog(GsonUtils.toJson(enity))
+                                soketCommit(GsonUtils.toJson("success"))
+                            } else if ("2" == enity.status) { //删除数据
+                                showToast(resources.getString(R.string.qcsj))
+                                mData.clear()
+                                sendData = DataEnity()
+                                adapter!!.setData(mData)
+
+                                text1.text = ""  //预约号
+                                text2.text = ""  //站线
+                                text3.text = "" //车辆识别代号
+                                text4.text = ""//站线
+
+                                LanguageUtil.setTitleToSp(this@MainActivity, "clsbdh", "")
+                                LanguageUtil.setTitleToSp(this@MainActivity, "zh", "")
+                                LanguageUtil.setTitleToSp(this@MainActivity, "zx", "")
+                                LanguageUtil.setTitleToSp(this@MainActivity, "yyh", "")
+
                                 soketCommit(GsonUtils.toJson("success"))
                             }
                         } else {
                             showToast(resources.getString(R.string.receivefailed))
                         }
                     } catch (e: Exception) {
-                        showToast(e.message!!)
+                        showToast("ERROR1--" + e.message!!)
                     }
                 }
 
@@ -271,17 +314,17 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
                             enity.seaL_TYPE = "X"//新增的
                             enity.insP_ITEM = "CH" //底盘
                             enity.speciaL_TYPE = "PA" //纸质
-                            if(mData.size > 0){
+                            if (mData.size > 0) {
                                 for (index in 0 until mData.size) { //去重
                                     if (enity.seaL_NO == mData[index].seaL_NO) {
                                         break
                                     }
-                                    if(index == mData.size -1){
+                                    if (index == mData.size - 1) {
                                         mData.add(enity)
                                         adapter!!.setData(mData)
                                     }
                                 }
-                            }else{
+                            } else {
                                 mData.add(enity)
                                 adapter!!.setData(mData)
                             }
@@ -312,6 +355,11 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
             mData = enity.data
             adapter!!.setData(mData)
             sendData = enity
+
+            text1.text = enity.appoinT_NO  //预约号
+            text2.text = enity.station  //站线
+            text3.text = enity.veH_ID //车辆识别代号
+            text4.text = enity.leaN_NO//站线
         }
     }
 

@@ -24,4 +24,12 @@
     <string name="read_failed">SCAN_READ_FAIL.</string>
     <string name="checkusb">Please check whether USB is connected.</string>
     <string name="receivefailed">receive data is null.</string>
+    <string name="jly">EDRD</string>
+    <string name="yyh">APPOINT_NO:  </string>
+    <string name="zh">STATION:  </string>
+    <string name="zx">LEAN_NO:  </string>
+    <string name="clsbdh">VEH_ID:  </string>
+    <string name="fssj">CODE:SEND DATA</string>
+    <string name="jssj">CODE:GET DATA</string>
+    <string name="qcsj">CODE:DELETE DATA</string>
 </resources>

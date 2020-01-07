@@ -23,17 +23,20 @@ public class DMZUtils {
         map.put("N", MyApplication.Companion.getContext().getResources().getString(R.string.n));
         map.put(MyApplication.Companion.getContext().getResources().getString(R.string.n), "N");
 
-        map.put("CH",MyApplication.Companion.getContext().getResources().getString(R.string.dipan));
-        map.put(MyApplication.Companion.getContext().getResources().getString(R.string.dipan),"CH");
+//        map.put("CH",MyApplication.Companion.getContext().getResources().getString(R.string.dipan));
+//        map.put(MyApplication.Companion.getContext().getResources().getString(R.string.dipan),"CH");
 
-        map.put("SL",MyApplication.Companion.getContext().getResources().getString(R.string.sld));
-        map.put(MyApplication.Companion.getContext().getResources().getString(R.string.sld),"SL");
+        map.put("S0",MyApplication.Companion.getContext().getResources().getString(R.string.sld));
+        map.put(MyApplication.Companion.getContext().getResources().getString(R.string.sld),"S0");
 
-        map.put("SD",MyApplication.Companion.getContext().getResources().getString(R.string.sdd));
-        map.put(MyApplication.Companion.getContext().getResources().getString(R.string.sdd),"SD");
+        map.put("S3",MyApplication.Companion.getContext().getResources().getString(R.string.sdd));
+        map.put(MyApplication.Companion.getContext().getResources().getString(R.string.sdd),"S3");
 
-        map.put("TA",MyApplication.Companion.getContext().getResources().getString(R.string.tx));
-        map.put(MyApplication.Companion.getContext().getResources().getString(R.string.tx),"TA");
+        map.put("M5",MyApplication.Companion.getContext().getResources().getString(R.string.tx));
+        map.put(MyApplication.Companion.getContext().getResources().getString(R.string.tx),"M5");
+
+        map.put("S6",MyApplication.Companion.getContext().getResources().getString(R.string.jly));
+        map.put(MyApplication.Companion.getContext().getResources().getString(R.string.jly),"S6");
 
         map.put("PA",MyApplication.Companion.getContext().getResources().getString(R.string.paper));
         map.put(MyApplication.Companion.getContext().getResources().getString(R.string.paper),"PA");

@@ -83,10 +83,10 @@ class MyAdapter(private var mContext: Context? = null, private var mData: List<D
     }
 
     inner class MyHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var item: TextView = view.findViewById<TextView>(R.id.item)
-        var fqbj: TextView = view.findViewById<TextView>(R.id.fqbj)
-        var sp_fqwz: Spinner = view.findViewById<Spinner>(R.id.sp_fqwz)
-        var sp_fqlx: Spinner = view.findViewById<Spinner>(R.id.sp_fqlx)
+        var item: TextView = view.findViewById(R.id.item)
+        var fqbj: TextView = view.findViewById(R.id.fqbj)
+        var sp_fqwz: Spinner = view.findViewById(R.id.sp_fqwz)
+        var sp_fqlx: Spinner = view.findViewById(R.id.sp_fqlx)
 
         init {
             initSp(sp_fqwz)
@@ -105,8 +105,9 @@ class MyAdapter(private var mContext: Context? = null, private var mData: List<D
             sp_fqlx.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {}
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    Log.d("lylog"," item listener "+" fqlx = "+sp_fqlx.selectedItem.toString())
                     mData!![adapterPosition].speciaL_TYPE = DMZUtils.getDmz(sp_fqlx.selectedItem.toString())
-                    listener!!.getAdapterData(adapterPosition,  DMZUtils.getDmz(sp_fqlx.selectedItem.toString()), "speciaL_TYPE")
+                    listener!!.getAdapterData(adapterPosition,  DMZUtils.getDmz(sp_fqlx.selectedItem.toString())!!, "speciaL_TYPE")
                 }
             }
         }
@@ -117,10 +118,10 @@ class MyAdapter(private var mContext: Context? = null, private var mData: List<D
             when (spiner) {
                 sp_fqwz -> {
                     adapter.clear()
-                    adapter.add(mContext!!.resources.getString(R.string.dipan))
                     adapter.add(mContext!!.resources.getString(R.string.sdd))
                     adapter.add(mContext!!.resources.getString(R.string.sld))
                     adapter.add(mContext!!.resources.getString(R.string.tx))
+                    adapter.add(mContext!!.resources.getString(R.string.jly))
                     spiner.adapter = adapter
                 }
                 sp_fqlx -> {
@@ -142,15 +143,30 @@ class MyAdapter(private var mContext: Context? = null, private var mData: List<D
             if ("X" != mData!![position].seaL_TYPE) { //不是新增的
                 sp_fqwz.isEnabled = false
                 sp_fqlx.isEnabled = false
-                sp_fqwz.setBackgroundColor(Color.WHITE)
-                sp_fqlx.setBackgroundColor(Color.WHITE)
+                sp_fqwz.setBackgroundColor(mContext!!.resources.getColor(R.color.white))
+                sp_fqlx.setBackgroundColor(mContext!!.resources.getColor(R.color.white))
                 DMZUtils.setSpinner2Dmsm(DMZUtils.getDmmc(mData!![position].speciaL_TYPE), sp_fqlx)
                 DMZUtils.setSpinner2Dmsm(DMZUtils.getDmmc(mData!![position].insP_ITEM), sp_fqwz)
             } else {
                 sp_fqwz.isEnabled = true
                 sp_fqlx.isEnabled = true
+                sp_fqwz.background = mContext!!.resources.getDrawable(R.drawable.sp_bg)
+                sp_fqlx.background = mContext!!.resources.getDrawable(R.drawable.sp_bg)
                 DMZUtils.setSpinner2Dmsm(DMZUtils.getDmmc(mData!![position].speciaL_TYPE), sp_fqlx)
                 DMZUtils.setSpinner2Dmsm(DMZUtils.getDmmc(mData!![position].insP_ITEM), sp_fqwz)
+            }
+
+            when(mData!![position].seaL_TYPE){
+                "X" ->{
+                    fqbj.setTextColor(Color.GREEN)
+                }
+                "Y" ->{
+                    fqbj.setTextColor(Color.GRAY)
+                }
+                "R","N"->{
+                    fqbj.setTextColor(Color.RED)
+                }
+
             }
         }
     }
