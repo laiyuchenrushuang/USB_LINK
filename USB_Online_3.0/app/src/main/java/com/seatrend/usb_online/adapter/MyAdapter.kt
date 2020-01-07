@@ -106,6 +106,7 @@ class MyAdapter(private var mContext: Context? = null, private var mData: List<D
                 override fun onNothingSelected(p0: AdapterView<*>?) {}
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     Log.d("lylog"," item listener "+" fqlx = "+sp_fqlx.selectedItem.toString())
+                    Log.d("lylog"," item listener "+" fqlx DMZ = "+DMZUtils.getDmz(sp_fqlx.selectedItem.toString()))
                     mData!![adapterPosition].speciaL_TYPE = DMZUtils.getDmz(sp_fqlx.selectedItem.toString())
                     listener!!.getAdapterData(adapterPosition,  DMZUtils.getDmz(sp_fqlx.selectedItem.toString())!!, "speciaL_TYPE")
                 }

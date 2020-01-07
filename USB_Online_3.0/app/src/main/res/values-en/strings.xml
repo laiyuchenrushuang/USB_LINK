@@ -17,8 +17,8 @@
     <string name="zl">SEAL TYPE:</string>
     <string name="wz">SEAL POSITON:</string>
     <string name="zt">SEAL STATE:</string>
-    <string name="usb_connected">Usb connection successful</string>
-    <string name="usb_off">USB disconnect</string>
+    <string name="usb_connected">Usb connection successful.</string>
+    <string name="usb_off">USB disconnect.</string>
     <string name="send_ok">Send  data success.</string>
     <string name="no_cun_zai">The scanned barcode is not in the list.</string>
     <string name="read_failed">SCAN_READ_FAIL.</string>

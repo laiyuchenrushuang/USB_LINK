@@ -19,7 +19,7 @@ class UsbBroatcastReceiver(var mHandler: MainActivity.MessageHandler) : Broadcas
                 msg.what = Constants.USB_CONNECTED
                 mHandler.sendMessage(msg)
             } else {
-                Toast.makeText(context,"Usb disconnect.",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,R.string.usb_off,Toast.LENGTH_SHORT).show()
                 var msg = Message.obtain()
                 msg.what = Constants.USB_EXIT
                 mHandler.sendMessage(msg)
