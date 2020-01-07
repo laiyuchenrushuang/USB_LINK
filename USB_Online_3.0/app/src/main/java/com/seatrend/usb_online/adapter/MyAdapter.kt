@@ -17,6 +17,7 @@ import android.widget.TextView
 import com.seatrend.usb_online.R
 import com.seatrend.usb_online.enity.DataEnity
 import com.seatrend.usb_online.util.DMZUtils
+import com.seatrend.usb_online.util.GsonUtils
 import java.util.*
 import kotlin.collections.ArrayList
 import java.util.Comparator as Comparator1

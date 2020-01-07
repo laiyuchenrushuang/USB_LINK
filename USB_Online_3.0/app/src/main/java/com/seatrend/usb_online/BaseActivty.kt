@@ -140,29 +140,29 @@ abstract class BaseActivty : AppCompatActivity() {
     fun showLog(msg: String) {
         Log.d("[lylog]-->>", msg)
     }
-    private fun languageWork(context: Context): Context {
-        // 8.0及以上使用createConfigurationContext设置configuration
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            updateResources(context)
-        } else {
-            context
-        }
-    }
+//    private fun languageWork(context: Context): Context {
+//        // 8.0及以上使用createConfigurationContext设置configuration
+//        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            updateResources(context)
+//        } else {
+//            context
+//        }
+//    }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private fun updateResources(context: Context): Context {
-        val resources = context.getResources()
-        val locale = LanguageUtil.getLocale(context) ?: return context
-        val configuration = resources.getConfiguration()
-        configuration.setLocale(locale)
-        configuration.setLocales(LocaleList(locale))
-        return context.createConfigurationContext(configuration)
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.O)
+//    private fun updateResources(context: Context): Context {
+//        val resources = context.getResources()
+//        val locale = LanguageUtil.getLocale(context) ?: return context
+//        val configuration = resources.getConfiguration()
+//        configuration.setLocale(locale)
+//        configuration.setLocales(LocaleList(locale))
+//        return context.createConfigurationContext(configuration)
+//    }
 
-    override fun attachBaseContext(newBase: Context) {
-        val context = languageWork(newBase)
-        super.attachBaseContext(context)
-
-    }
+//    override fun attachBaseContext(newBase: Context) {
+//        val context = languageWork(newBase)
+//        super.attachBaseContext(context)
+//
+//    }
 
 }

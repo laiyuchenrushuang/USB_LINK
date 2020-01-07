@@ -22,8 +22,6 @@ import device.scanner.IScannerService
 import device.scanner.ScanConst
 import device.scanner.ScannerService
 import java.util.*
-import kotlin.collections.ArrayList
-import android.util.DisplayMetrics
 import com.seatrend.usb_online.util.*
 
 
@@ -64,6 +62,14 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
     }
 
     private fun initRecycleView() {
+        DMZUtils.getDmzMap(this)
+        if(LanguageUtil.getCurrentLocale(this).equals(Locale.ENGLISH)){
+            showLog("enlish test -> "+resources.getString(R.string.clsbdh))
+            showLog(" item listener "+" current MAP = "+GsonUtils.toJson(DMZUtils.getDmzMap(this)))
+        }else{
+            showLog("chinese test -> "+resources.getString(R.string.clsbdh))
+            showLog(" item listener "+" current MAP = "+GsonUtils.toJson(DMZUtils.getDmzMap(this)))
+        }
         ll = LinearLayoutManager(this)
         m_recycler_view!!.layoutManager = ll
         if ("1".equals(LanguageUtil.getBJFromSP(this))) { //1 证明是点击切换中英按钮来的
@@ -168,27 +174,26 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
 
             try {
                 if (LanguageUtil.getCurrentLocale(this).equals(Locale.ENGLISH)) {
-                    showLog("ENGLISH")
+                    showLog("英->中")
                     LanguageUtil.updateLocale(this, LanguageUtil.LOCALE_CHINESE)
                     LanguageUtil.setDataToSp(this, mData)
-                    if (sendData != null && !TextUtils.isEmpty(sendData!!.veH_ID)) {
-                        LanguageUtil.setTitleToSp(this, "clsbdh", sendData!!.veH_ID)
-                        LanguageUtil.setTitleToSp(this, "zh", sendData!!.station)
-                        LanguageUtil.setTitleToSp(this, "zx", sendData!!.leaN_NO)
-                        LanguageUtil.setTitleToSp(this, "yyh", sendData!!.appoinT_NO)
+                    if (!TextUtils.isEmpty(sendData.veH_ID)) {
+                        LanguageUtil.setTitleToSp(this, "clsbdh", sendData.veH_ID)
+                        LanguageUtil.setTitleToSp(this, "zh", sendData.station)
+                        LanguageUtil.setTitleToSp(this, "zx", sendData.leaN_NO)
+                        LanguageUtil.setTitleToSp(this, "yyh", sendData.appoinT_NO)
                     }
-
                     LanguageUtil.setBJToSp(this, "1")
                     this.recreate()
-                } else {
-                    showLog("CHINESE")
+                } else if (LanguageUtil.getCurrentLocale(this).equals(Locale.CHINESE)){
+                    showLog("中->英")
                     LanguageUtil.updateLocale(this, LanguageUtil.LOCALE_ENGLISH)
                     LanguageUtil.setDataToSp(this, mData)
-                    if (sendData != null && !TextUtils.isEmpty(sendData!!.veH_ID)) {
-                        LanguageUtil.setTitleToSp(this, "clsbdh", sendData!!.veH_ID)
-                        LanguageUtil.setTitleToSp(this, "zh", sendData!!.station)
-                        LanguageUtil.setTitleToSp(this, "zx", sendData!!.leaN_NO)
-                        LanguageUtil.setTitleToSp(this, "yyh", sendData!!.appoinT_NO)
+                    if (!TextUtils.isEmpty(sendData.veH_ID)) {
+                        LanguageUtil.setTitleToSp(this, "clsbdh", sendData.veH_ID)
+                        LanguageUtil.setTitleToSp(this, "zh", sendData.station)
+                        LanguageUtil.setTitleToSp(this, "zx", sendData.leaN_NO)
+                        LanguageUtil.setTitleToSp(this, "yyh", sendData.appoinT_NO)
                     }
                     LanguageUtil.setBJToSp(this, "1")
                     this.recreate()
