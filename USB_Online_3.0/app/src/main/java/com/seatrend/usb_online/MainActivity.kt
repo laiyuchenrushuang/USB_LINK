@@ -63,13 +63,14 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
 
     private fun initRecycleView() {
         DMZUtils.getDmzMap(this)
-        if(LanguageUtil.getCurrentLocale(this).equals(Locale.ENGLISH)){
-            showLog("enlish test -> "+resources.getString(R.string.clsbdh))
-            showLog(" item listener "+" current MAP = "+GsonUtils.toJson(DMZUtils.getDmzMap(this)))
-        }else{
-            showLog("chinese test -> "+resources.getString(R.string.clsbdh))
-            showLog(" item listener "+" current MAP = "+GsonUtils.toJson(DMZUtils.getDmzMap(this)))
-        }
+
+//        if(LanguageUtil.getCurrentLocale(this).equals(Locale.ENGLISH)){
+//            showLog("enlish test -> "+resources.getString(R.string.clsbdh))
+//            showLog(" item listener "+" current MAP = "+GsonUtils.toJson(DMZUtils.getDmzMap(this)))
+//        }else{
+//            showLog("chinese test -> "+resources.getString(R.string.clsbdh))
+//            showLog(" item listener "+" current MAP = "+GsonUtils.toJson(DMZUtils.getDmzMap(this)))
+//        }
         ll = LinearLayoutManager(this)
         m_recycler_view!!.layoutManager = ll
         if ("1".equals(LanguageUtil.getBJFromSP(this))) { //1 证明是点击切换中英按钮来的
@@ -78,17 +79,17 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
             text2.text = LanguageUtil.getTitleFromSP(this, "zh")  //站号
             text3.text = LanguageUtil.getTitleFromSP(this, "clsbdh") //车辆识别代号
             text4.text = LanguageUtil.getTitleFromSP(this, "zx")//站线
-        }else{
+        } else {
+            LanguageUtil.initAppLanguage(this,"zh");
             LanguageUtil.setTitleToSp(this, "clsbdh", "")
             LanguageUtil.setTitleToSp(this, "zh", "")
             LanguageUtil.setTitleToSp(this, "zx", "")
             LanguageUtil.setTitleToSp(this, "yyh", "")
         }
-        LanguageUtil.setBJToSp(this, "0")
+
         adapter = MyAdapter(this, mData)
         m_recycler_view.adapter = adapter
         adapter!!.setLisDataback(this)
-
     }
 
     private fun registerScanBroadcast() {
@@ -174,8 +175,9 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
 
             try {
                 if (LanguageUtil.getCurrentLocale(this).equals(Locale.ENGLISH)) {
-                    showLog("英->中")
+                    showLog("英->中  == " + LanguageUtil.getCurrentLocale(this)+"->"+LanguageUtil.LOCALE_CHINESE)
                     LanguageUtil.updateLocale(this, LanguageUtil.LOCALE_CHINESE)
+                    newLocal = LanguageUtil.LOCALE_CHINESE
                     LanguageUtil.setDataToSp(this, mData)
                     if (!TextUtils.isEmpty(sendData.veH_ID)) {
                         LanguageUtil.setTitleToSp(this, "clsbdh", sendData.veH_ID)
@@ -185,9 +187,10 @@ class MainActivity : BaseActivty(), MyAdapter.Dback {
                     }
                     LanguageUtil.setBJToSp(this, "1")
                     this.recreate()
-                } else if (LanguageUtil.getCurrentLocale(this).equals(Locale.CHINESE)){
-                    showLog("中->英")
+                } else {
+                    showLog("中->英" + LanguageUtil.getCurrentLocale(this)+"->"+LanguageUtil.LOCALE_ENGLISH)
                     LanguageUtil.updateLocale(this, LanguageUtil.LOCALE_ENGLISH)
+                    newLocal = LanguageUtil.LOCALE_ENGLISH
                     LanguageUtil.setDataToSp(this, mData)
                     if (!TextUtils.isEmpty(sendData.veH_ID)) {
                         LanguageUtil.setTitleToSp(this, "clsbdh", sendData.veH_ID)

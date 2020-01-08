@@ -3,7 +3,6 @@ package com.seatrend.usb_online
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.Context
-import android.content.Intent
 import android.content.pm.*
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -16,11 +15,9 @@ import com.seatrend.usb_online.enity.DataEnity
 import com.seatrend.usb_online.util.ActivityManager
 import java.util.*
 import kotlin.collections.ArrayList
-import android.os.LocaleList
-import com.seatrend.usb_online.util.LanguageUtil
 import android.os.Build
-import android.support.annotation.RequiresApi
 import android.support.v4.app.ActivityCompat
+import com.seatrend.usb_online.util.LanguageUtil
 
 
 abstract class BaseActivty : AppCompatActivity() {
@@ -31,6 +28,7 @@ abstract class BaseActivty : AppCompatActivity() {
     var tvRight: TextView? = null
     var rlParent: RelativeLayout? = null
     var mData = ArrayList<DataEnity.DATA>()
+    var newLocal :Locale?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -158,11 +156,15 @@ abstract class BaseActivty : AppCompatActivity() {
 //        configuration.setLocales(LocaleList(locale))
 //        return context.createConfigurationContext(configuration)
 //    }
-
-//    override fun attachBaseContext(newBase: Context) {
-//        val context = languageWork(newBase)
-//        super.attachBaseContext(context)
 //
-//    }
+    override fun attachBaseContext(newBase: Context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            super.attachBaseContext(newBase);
+        } else {
+            //zh：中文
+            super.attachBaseContext(LanguageUtil.initAppLanguage(newBase, ""+newLocal));
+        }
+
+    }
 
 }
