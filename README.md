@@ -20,6 +20,11 @@
   
   VERSION 3.0
   
-  PC 测试软件  HardWareSocketHost.exe  0 是pc 发数据到Android   1 是 pc 请求发送数据    2 pc请求删除数据
+  PC 测试软件  HardWareSocketHost.exe  
+  0 是pc 发数据到Android   1 是 pc 请求发送数据    2 pc请求删除数据
   需要 配置adb HardWareSocketHost.exe.config文件  value为你pc端的adb路径
   <add key="AdbPath" value = "C:\Users\tcb\AppData\Local\Android\Sdk\platform-tools"/>
+  
+  VERSION 4.0
+  
+  主要解决问题，可以多次录入，然后再上传！
