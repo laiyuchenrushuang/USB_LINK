@@ -71,7 +71,6 @@ abstract class BaseActivty : AppCompatActivity() {
     }
 
     private fun initUSB() {
-        showLog("aaaaaaa")
         mBHandler = MessageHandler()
         mMybroatcast = UsbBroatcastReceiver(mBHandler!!)
     }
@@ -100,6 +99,8 @@ abstract class BaseActivty : AppCompatActivity() {
                                     soketCommit(GsonUtils.toJson(sendData))
                                 }else{
                                     showToast("Nothing")
+                                    showLog(GsonUtils.toJson(sendData))
+                                    soketCommit(GsonUtils.toJson(sendData))
                                 }
                             }
 //                            else if ("0" == enity.status) { //获取数据

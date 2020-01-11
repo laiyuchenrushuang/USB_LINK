@@ -15,7 +15,7 @@ class UsbBroatcastReceiver(var mHandler: Handler) : BroadcastReceiver() {
         if (null != intent && Constants.USB_ACTION.equals(intent.action)) {
             if (intent.extras.getBoolean("connected")) {
                 Log.d("lylog","aaaaaa")
-                Toast.makeText(context, R.string.usb_connected,Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, R.string.usb_connected,Toast.LENGTH_SHORT).show()
                 var msg = Message.obtain()
                 msg.what = Constants.USB_CONNECTED
                 mHandler.sendMessage(msg)

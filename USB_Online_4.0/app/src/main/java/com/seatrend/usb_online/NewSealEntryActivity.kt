@@ -45,33 +45,6 @@ class NewSealEntryActivity : BaseActivty(), Adapter2.Dback {
     object : Handler() {
         override fun handleMessage(msg: Message?) {
             super.handleMessage(msg)
-            var type =""
-            if (Constants.TAXI == SharePreferenceUtils.getSettingFromSP(this@NewSealEntryActivity, Constants.CLLX)) {
-
-                if (transducer.isChecked) {
-                    type = "T1"
-                }
-                if (meter.isChecked) {
-                    type = "M5"
-                }
-                if(taxi_null.isChecked){
-                    type = ""
-                }
-            } else {
-                if (sdd.isChecked) {
-                    type = "S3"
-                }
-                if (sld.isChecked) {
-                    type = "S0"
-                }
-                if(edrd.isChecked){
-                    type = "S6"
-                }
-                if(taxi_null.isChecked){
-                    type = ""
-                }
-            }
-
 
             //============================重要
             mDecodeResult.recycle()
@@ -81,6 +54,33 @@ class NewSealEntryActivity : BaseActivty(), Adapter2.Dback {
             if (Constants.READ_FAIL != mDecodeResult.toString() && !TextUtils.isEmpty(mDecodeResult.toString())) {
                 runOnUiThread {
                     var enity = NewData.DATA_NEW()
+                    var type =""
+                    if (Constants.TAXI == SharePreferenceUtils.getSettingFromSP(this@NewSealEntryActivity, Constants.CLLX)) {
+
+                        if (transducer.isChecked) {
+                            type = "T1"
+                        }
+                        if (meter.isChecked) {
+                            type = "M5"
+                        }
+                        if(taxi_null.isChecked){
+                            type = ""
+                        }
+                    } else {
+                        if (sdd.isChecked) {
+                            type = "S3"
+                        }
+                        if (sld.isChecked) {
+                            type = "S0"
+                        }
+                        if(edrd.isChecked){
+                            type = "S6"
+                        }
+                        if(taxi_null.isChecked){
+                            type = ""
+                        }
+                    }
+
                     enity.seaL_NO = mDecodeResult.toString()
                     enity.insP_ITEM = type
                     if (mData.size > 0) {
