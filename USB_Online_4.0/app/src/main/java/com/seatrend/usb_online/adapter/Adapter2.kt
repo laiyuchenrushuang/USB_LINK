@@ -48,7 +48,7 @@ class Adapter2(private var mContext: Context? = null, private var mData: List<Ne
         @SuppressLint("ResourceAsColor")
         fun setItemView(position: Int) {
             id.text = mData!![position].seaL_NO
-            lx.text = if(TextUtils.isEmpty(DMZUtils.getDmmc(mData!![position].insP_ITEM))) "null" else DMZUtils.getDmmc(mData!![position].insP_ITEM)
+            lx.text = if(TextUtils.isEmpty(DMZUtils.getDmmc(mData!![position].insP_ITEM))) mContext!!.resources.getText(R.string.other) else DMZUtils.getDmmc(mData!![position].insP_ITEM)
         }
     }
 

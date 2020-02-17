@@ -62,4 +62,5 @@
     <string name="meter">Meter</string>
     <string name="new_seal_tip">Select the location type to be unique</string>
     <string name="shuliang">Count：</string>
+    <string name="other">Others</string>
 </resources>
