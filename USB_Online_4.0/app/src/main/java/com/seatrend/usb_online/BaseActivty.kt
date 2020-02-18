@@ -65,7 +65,7 @@ abstract class BaseActivty : AppCompatActivity() {
         registerUSBBroadcast()
         initScanner()
         initView()
-        ActivityManager.getInstance().addActivity(this);
+        ActivityManager.getInstance().addActivity(this)
         // setStatusBarColor(resources.getColor(R.color.white))
 
     }
@@ -97,7 +97,7 @@ abstract class BaseActivty : AppCompatActivity() {
                                     showToast(resources.getString(R.string.fssj))
                                     showLog(GsonUtils.toJson(sendData))
                                     soketCommit(GsonUtils.toJson(sendData))
-                                }else{
+                                } else {
                                     showToast("Nothing")
                                     showLog(GsonUtils.toJson(sendData))
                                     soketCommit(GsonUtils.toJson(sendData))
@@ -112,6 +112,16 @@ abstract class BaseActivty : AppCompatActivity() {
                                 showToast(resources.getString(R.string.qcsj))
                                 MyApplication.mAllData.clear()
                                 soketCommit(GsonUtils.toJson("success"))
+                            } else if ("3" == enity.status) {  // 下载当天数据
+                                MyApplication.mGetTodayData.clear()
+                                if (enity.message.datA_LIST.size > 0) {
+                                    showToast(resources.getString(R.string.get_today_data))
+                                    MyApplication.mGetTodayData = enity.message.datA_LIST
+                                    soketCommit(GsonUtils.toJson("success"))
+                                } else {
+                                    showToast("Nothing")
+                                }
+
                             }
                         } else {
                             showToast(resources.getString(R.string.receivefailed))
@@ -246,7 +256,7 @@ abstract class BaseActivty : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        ActivityManager.getInstance().removeActivity(this);
+        ActivityManager.getInstance().removeActivity(this)
     }
 
     abstract fun initView()
@@ -282,10 +292,10 @@ abstract class BaseActivty : AppCompatActivity() {
 //
     override fun attachBaseContext(newBase: Context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            super.attachBaseContext(newBase);
+            super.attachBaseContext(newBase)
         } else {
             //zh：中文
-            super.attachBaseContext(LanguageUtil.initAppLanguage(newBase, "" + newLocal));
+            super.attachBaseContext(LanguageUtil.initAppLanguage(newBase, "" + newLocal))
         }
 
     }

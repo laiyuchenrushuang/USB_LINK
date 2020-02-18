@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Message
 import android.text.TextUtils
+import com.seatrend.usb_online.enity.SocketEnity
 import com.seatrend.usb_online.util.Constants
 import com.seatrend.usb_online.util.LanguageUtil
 import com.seatrend.usb_online.util.SharePreferenceUtils
@@ -63,6 +64,17 @@ class LoginActivity : BaseActivty() {
         } else {
             cllx.text = "--"
         }
+
+        //test
+        var enity1 = SocketEnity.MESSAGE.DATA_LIST()
+        enity1.appoinT_NO = "123"
+        enity1.veH_Reg_Mark = "456"
+        var enity2 = SocketEnity.MESSAGE.DATA_LIST()
+        enity2.appoinT_NO = "789"
+        enity2.veH_Reg_Mark = "147"
+        MyApplication.mGetTodayData.add(enity1)
+        MyApplication.mGetTodayData.add(enity2)
+
     }
 
     private fun bindEvent() {
@@ -76,9 +88,42 @@ class LoginActivity : BaseActivty() {
                 return@setOnClickListener
             }
 
+
+
             MyApplication.HM_CODE = edit_cphm.text.toString()
 
-            startActivity(Intent(this, EntryActivity::class.java))
+            if ("1" == SharePreferenceUtils.getSettingFromSP(this, "yy_model")){
+                //预约号码查询
+                if(MyApplication.mGetTodayData.size > 0){
+                    for( db in MyApplication.mGetTodayData){
+                        if(MyApplication.HM_CODE == db.appoinT_NO){
+                            startActivity(Intent(this, EntryActivity::class.java))
+                            break
+                        }
+                        if(db == MyApplication.mGetTodayData.last()){
+                            showToast(resources.getString(R.string.cllx_tip3))
+                        }
+                    }
+                }else{
+                    showToast(resources.getString(R.string.cllx_tip2))
+                }
+            }else{
+                //车牌号码查询
+                if(MyApplication.mGetTodayData.size > 0){
+                    for( db in MyApplication.mGetTodayData){
+                        if(MyApplication.HM_CODE == db.veH_Reg_Mark){
+                            startActivity(Intent(this, EntryActivity::class.java))
+                            break
+                        }
+                        if(db == MyApplication.mGetTodayData.last()){
+                            showToast(resources.getString(R.string.cllx_tip3))
+                        }
+                    }
+                }else{
+                    showToast(resources.getString(R.string.cllx_tip2))
+                }
+            }
+
         }
 
         change.setOnClickListener {

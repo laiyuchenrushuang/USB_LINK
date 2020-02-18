@@ -63,4 +63,7 @@
     <string name="new_seal_tip">Select the location type to be unique</string>
     <string name="shuliang">Count：</string>
     <string name="other">Others</string>
+    <string name="get_today_data">Download day data</string>
+    <string name="cllx_tip2">Please download the data of the day first</string>
+    <string name="cllx_tip3">The current number is not day data</string>
 </resources>

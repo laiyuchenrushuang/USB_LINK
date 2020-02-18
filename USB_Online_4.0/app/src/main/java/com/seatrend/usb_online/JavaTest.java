@@ -33,6 +33,7 @@ public class JavaTest {
         data1.setSEAL_TYPE("X");
         list.add(data1);
 
+
         DataEnity enity = new DataEnity();
         enity.setDATA(list);
         System.out.print("send ok");
