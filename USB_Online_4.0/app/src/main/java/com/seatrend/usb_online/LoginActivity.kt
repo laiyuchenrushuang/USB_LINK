@@ -66,14 +66,14 @@ class LoginActivity : BaseActivty() {
         }
 
         //test
-        var enity1 = SocketEnity.MESSAGE.DATA_LIST()
-        enity1.appoinT_NO = "123"
-        enity1.veH_Reg_Mark = "456"
-        var enity2 = SocketEnity.MESSAGE.DATA_LIST()
-        enity2.appoinT_NO = "789"
-        enity2.veH_Reg_Mark = "147"
-        MyApplication.mGetTodayData.add(enity1)
-        MyApplication.mGetTodayData.add(enity2)
+//        var enity1 = SocketEnity.MESSAGE.DATA_LIST()
+//        enity1.appoinT_NO = "123"
+//        enity1.veH_Reg_Mark = "456"
+//        var enity2 = SocketEnity.MESSAGE.DATA_LIST()
+//        enity2.appoinT_NO = "789"
+//        enity2.veH_Reg_Mark = "147"
+//        MyApplication.mGetTodayData.add(enity1)
+//        MyApplication.mGetTodayData.add(enity2)
 
     }
 

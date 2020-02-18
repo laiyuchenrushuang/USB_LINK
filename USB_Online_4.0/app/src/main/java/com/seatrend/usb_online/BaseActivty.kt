@@ -20,6 +20,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.*
 import com.seatrend.usb_online.broadcast.UsbBroatcastReceiver
+import com.seatrend.usb_online.enity.LoadDayDataEnity
 import com.seatrend.usb_online.enity.NewData
 import com.seatrend.usb_online.enity.SocketEnity
 import com.seatrend.usb_online.receive.MyReceiveThread
@@ -114,9 +115,10 @@ abstract class BaseActivty : AppCompatActivity() {
                                 soketCommit(GsonUtils.toJson("success"))
                             } else if ("3" == enity.status) {  // 下载当天数据
                                 MyApplication.mGetTodayData.clear()
-                                if (enity.message.datA_LIST.size > 0) {
+                                val ey = GsonUtils.gson(enity.message, LoadDayDataEnity::class.java)
+                                if (ey.datA_LIST.size > 0) {
                                     showToast(resources.getString(R.string.get_today_data))
-                                    MyApplication.mGetTodayData = enity.message.datA_LIST
+                                    MyApplication.mGetTodayData = ey.datA_LIST
                                     soketCommit(GsonUtils.toJson("success"))
                                 } else {
                                     showToast("Nothing")
@@ -127,7 +129,7 @@ abstract class BaseActivty : AppCompatActivity() {
                             showToast(resources.getString(R.string.receivefailed))
                         }
                     } catch (e: Exception) {
-                        showToast("ERROR1--" + e.message!!)
+                        showLog("ERROR1--" + e.message!!)
                     }
                 }
             }

@@ -2,6 +2,7 @@ package com.seatrend.usb_online
 
 import android.app.Application
 import android.content.Context
+import com.seatrend.usb_online.enity.LoadDayDataEnity
 import com.seatrend.usb_online.enity.NewData
 import com.seatrend.usb_online.enity.SocketEnity
 import com.seatrend.usb_online.util.LanguageUtil
@@ -20,7 +21,7 @@ class MyApplication : Application() {
 
         var mAllData = ArrayList<NewData>()
 
-        var mGetTodayData = ArrayList<SocketEnity.MESSAGE.DATA_LIST>()
+        var mGetTodayData = ArrayList<LoadDayDataEnity.DATA_LIST>()
 
 
         var CLLX = ""  // 0 预约  |||||     1 车牌
